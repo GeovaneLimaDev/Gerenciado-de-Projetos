@@ -7,10 +7,13 @@ function Login () {
                 <h1>Fazer Login</h1>
 
                 <form action="">
-
-                </form>
-
-                <div>
+                    <div>
+                        <input type="email" placeholder="Email" />
+                    </div>
+                    <div>
+                        <input type="password" placeholder="Sua senha"/>
+                    </div>
+                    <div>
                     <Link to={"/cadastro"}>
                         <p>Criar Conta</p>
                     </Link>
@@ -19,6 +22,9 @@ function Login () {
 
                     <button>Entrar</button>
                 </div>
+                </form>
+
+                
             </main>
         </div>
 
