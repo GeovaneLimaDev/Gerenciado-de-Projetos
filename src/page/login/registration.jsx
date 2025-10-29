@@ -30,7 +30,6 @@ function Registration () {
         }
         
         const data = {
-            id: uuidv4(),
             name: name,
             email: email,
             password: password
@@ -48,7 +47,7 @@ function Registration () {
     return(
         <div>
             <main>
-                <h1>Criar Cadastro</h1>
+                <h1>Fazer Cadastro</h1>
                 <form action="">
                     <div>
                         <input onChange={(e) => setName(e.target.value)} type="text" placeholder="Seu nome"/>
