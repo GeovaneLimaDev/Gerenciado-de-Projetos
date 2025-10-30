@@ -25,13 +25,13 @@ function RecoverPass ({setRecover}) {
     }
     return ( 
         <div>
-            <div>
+            <aside>
                 <h3>Email de recuperação</h3>
                 <div>
                     <input onChange={(e) => setEmail(e.target.value)} type="email"  />
                 </div>
                 <button onClick={recover}>Recuperar</button>
-            </div>
+            </aside>
         </div>
     )
 }

@@ -3,7 +3,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 
 export async function registrationFire (user){
     try{
-        const userCreedential = await createUserWithEmailAndPassword(auth, user.email, user.password)
+        const userCreedential = await createUserWithEmailAndPassword(auth, user)
         return 'feito'
     }catch(erro){
         let mensagem = ''

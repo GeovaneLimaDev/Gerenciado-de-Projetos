@@ -30,16 +30,17 @@ function Registration () {
         }
         
         const data = {
-            name: name,
+            dysplayName: name,
             email: email,
             password: password
         } 
 
         const res = await registrationFire(data)
-        addLocalStorang(name)
 
+        
         if(res != 'feito') {
             alert(res)
+            return
         }
         nav('/')
     }
