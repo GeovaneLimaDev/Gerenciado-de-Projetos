@@ -5,7 +5,8 @@ import recoverPass from "../../service/firebase/login/recoverPass"
 function RecoverPass ({setRecover}) {
     const [email, setEmail] = useState() 
 
-    async function recover () {
+    async function recover (e) {
+        e.preventDefault()
         
         if(!email){
             alert('Adicione o email para recuperar sua conta!')
@@ -19,16 +20,18 @@ function RecoverPass ({setRecover}) {
 
         const res = await recoverPass(email)
         setRecover(false)
+
+        alert(res)
     }
     return ( 
         <div>
-            <form action=" ">
+            <div>
                 <h3>Email de recuperação</h3>
                 <div>
                     <input onChange={(e) => setEmail(e.target.value)} type="email"  />
                 </div>
                 <button onClick={recover}>Recuperar</button>
-            </form>
+            </div>
         </div>
     )
 }
