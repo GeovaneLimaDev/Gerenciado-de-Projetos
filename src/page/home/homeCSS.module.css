@@ -1,0 +1,16 @@
+.conteiner{
+    height: 100vh;
+    padding: 30px;
+}
+.main{
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+
+}
+.nav{
+    background-color: rgb(176, 176, 176);
+}
+.section{
+    background-color: rgb(211, 234, 254);
+}

@@ -3,7 +3,7 @@ Gerenciador de Projetos
 principais funcionalidades:
 
 adicionar, remover e editar um projeto.
-cada projeto vai ser um pbjeto com: titulo, descrição, data de inicio, data final(opicional), subTarefas, progresso, tipo.
+cada projeto vai ser um pbjeto com: titulo, descrição, data de inicio, data final(opicional), progresso, tag.
 
 ao clicar no projeto o usuario tera um quadro scrum, com quatro colunas:
 

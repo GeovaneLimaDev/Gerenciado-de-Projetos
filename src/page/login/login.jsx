@@ -24,7 +24,7 @@ function Login () {
                 console.log("Ninguém está logado");
             }
         })
-    })
+    }, [])
 
     //funcção para o login com email e senha normal
     async function saveDate (e) {

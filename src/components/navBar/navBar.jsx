@@ -1,9 +1,16 @@
+import { signOut } from "firebase/auth"
+import { auth } from "../../service/firebase/firebaseConfig"
+import { Link } from "react-router-dom"
+import { useState } from "react"
+import CreateNewProject from "../CreateProject/CreateProject"
+
 function NavBar () {
+    const [newProject, setNewProject] = useState(false) 
+    
     return (
         <menu>
             <header>
                 <div>
-                    <p>Ola Pessoa</p>
                     <h3>Menu</h3>
                 </div>
                 <div>busca</div>
@@ -11,7 +18,9 @@ function NavBar () {
             <aside>
                 <p>Opções</p>
                 <ul>
-                    <li>Meus Projetos</li>
+                    <Link to='/home'>
+                        <li>Meus Projetos</li>
+                    </Link>
                 </ul>
             </aside>
             <aside>
@@ -19,7 +28,8 @@ function NavBar () {
                 <ul>
                     map
                 </ul>
-                <button> +  Novo projeto</button>
+                <button onClick={() => setNewProject(true)}> +  Novo projeto</button>
+                {newProject && <CreateNewProject setNewProject={setNewProject}/>}
             </aside>
             <aside>
                 <p>Tags</p>
@@ -30,7 +40,9 @@ function NavBar () {
             </aside>
             <section>
                 <p>Configurações</p>
-                <button>sair</button>
+                <button onClick={() => {
+                    signOut(auth)
+                }}>sair</button>
             </section>
 
         </menu>

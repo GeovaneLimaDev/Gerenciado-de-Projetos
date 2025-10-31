@@ -3,31 +3,45 @@ import {auth} from "../../service/firebase/firebaseConfig"
 import { signOut } from "firebase/auth"
 import { Routes, Route} from "react-router-dom"
 import style from "./homeCSS.module.css"
+import { useEffect } from "react"
+import { onAuthStateChanged } from "firebase/auth"
+import { useNavigate } from "react-router-dom"
+import MyProject from "../../components/project/MyProject"
+import ScrumBoard from "../../components/scrum board/scrumBoard"
 
 function IndexHome () {
-    async function sair () {
-        await signOut(auth)
-    }
+    const nav = useNavigate()
+
+    useEffect(() => {
+        onAuthStateChanged(auth, (usuario) => {
+            if (!usuario) {
+                console.log("Ninguém está logado");
+                nav('/')
+            }
+        })
+    }, [])
+
     return (
-        <main>
-            <button onClick={sair}>sair</button>
-            <nav>
-                <NavBar />
-            </nav>
-            <section>
-                <header>
-                    <h1> ola </h1>
-                    <button> novo projeto</button>
-                </header>
+        <div className={style.conteiner}>
+            <main className={style.main}>
+                <nav className={style.nav}>
+                    <NavBar />
+                </nav>
+                <section className={style.section}>
+                    <header>
+                        <h1> ola </h1>
+                        imagem e nome
+                    </header>
+                    <aside>
+                        <Routes>
+                            <Route path="/" element={<MyProject />} />
 
-                <aside>
-                    <Routes>
-                        
-                    </Routes>
-                </aside>
-            </section>
-
-        </main>
+                            <Route path="/quadroScrum " element={<ScrumBoard />} />
+                        </Routes>
+                    </aside>
+                </section>
+            </main>
+        </div>
     )
 }
 
