@@ -26,7 +26,7 @@ function NavBar () {
             <aside>
                 <p>Projetos</p>
                 <ul>
-                    map
+                    
                 </ul>
                 <button onClick={() => setNewProject(true)}> +  Novo projeto</button>
                 {newProject && <CreateNewProject setNewProject={setNewProject}/>}

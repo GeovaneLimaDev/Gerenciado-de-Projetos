@@ -27,7 +27,7 @@ function CreateNewProject ({setNewProject}) {
         }
 
         const res = addProject(project)
-
+        
         setNewProject(false)
     }
     return (
@@ -51,6 +51,8 @@ function CreateNewProject ({setNewProject}) {
                     </div>
 
                     <button onClick={createProject}>Criar</button>
+
+                    <button onClick={() => setNewProject(false) }>Cancelar</button>
                 </form>
             </aside>            
         </div>
