@@ -1,13 +1,13 @@
 import { doc, updateDoc } from "firebase/firestore"
 import { db } from "../firebaseConfig"
 
-async function updatService (newProject, uid) {
+async function updatProject (newProject) {
     try {
         // Referência ao documento do usuário
-        const usuarioRef = doc(db, "usuarios", uid);
+        const usuarioRef = doc(db, "Project", newProject.id);
 
         // Atualiza os campos do documento
-        await updateDoc(usuarioRef, novosDados);
+        await updateDoc(usuarioRef, newProject);
 
         console.log("Documento atualizado com sucesso!");
     } catch (error) {
@@ -15,4 +15,4 @@ async function updatService (newProject, uid) {
     }
 }
 
-export default updatService
+export default updatProject

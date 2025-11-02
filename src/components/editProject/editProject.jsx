@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { auth } from "../../service/firebase/firebaseConfig"
+import updatProject from "../../service/firebase/project/updateProject"
 
+//funcção para editar projetos
 function EditProject ({setEdit, editedProject, user}){
     const [title, setTitle] =  useState('')
     const [description, setDescription] = useState('')
@@ -8,15 +10,16 @@ function EditProject ({setEdit, editedProject, user}){
 
     function edit () {
         const NewProject = {
-            id: editedProject.id,
-            userId: editedProject.userId,
-            title: !title ? editedProject.title : title,
+            id: editedProject.id,//mantem o id do projeto 
+            userId: editedProject.userId,// e o id do usuário tambem 
+            title: !title ? editedProject.title : title, // daqui pra frente eu usei um operador unário para simular um if else, se o usuário digitou o no cmapo titulo, ele recebe o valor digitado, mas se não foi digitado, ele recebe o valor original. 
             description: !description ? editedProject.description : description,
             dateEnd: !dateEnd ? editedProject.dateEnd : dateEnd,
-            creationDate: editedProject.creationDate,
+            creationDate: editedProject.creationDate, //mantem o dia de criação
         }
 
-        const user = auth.corr
+        const result = updatProject(NewProject)
+        setEdit(false)
     }
     return (
         <div>

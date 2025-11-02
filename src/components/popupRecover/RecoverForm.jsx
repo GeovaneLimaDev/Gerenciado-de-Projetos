@@ -3,6 +3,7 @@ import { emailValidation } from "../../utils/validators"
 import recoverPass from "../../service/firebase/login/recoverPass"
 
 function RecoverPass ({setRecover}) {
+    //função de recuperação de senha
     const [email, setEmail] = useState() 
 
     async function recover (e) {

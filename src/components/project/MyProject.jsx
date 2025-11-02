@@ -27,7 +27,7 @@ function MyProject () {
             }
         })
         return () => unsubscribe()
-    }, [])
+    })
 
     return (
         <div>
