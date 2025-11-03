@@ -19,7 +19,7 @@ function Login () {
         onAuthStateChanged(auth, (usuario) => {
             if (usuario) {
                 console.log("Usuário logado:", usuario);
-                nav('/home')
+                nav('/home/projetos')
             } else {
                 console.log("Ninguém está logado");
             }
@@ -41,7 +41,7 @@ function Login () {
             alert(res)
             return
         }
-        nav('/home')
+        nav('/home/projetos')
 
     } 
 

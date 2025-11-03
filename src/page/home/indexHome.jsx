@@ -6,7 +6,7 @@ import style from "./homeCSS.module.css"
 import { useEffect, useState } from "react"
 import { onAuthStateChanged } from "firebase/auth"
 import { useNavigate } from "react-router-dom"
-import MyProject from "../../components/project/MyProject"
+import MyProject from "../../components/myProject/MyProject"
 import ScrumBoard from "../../components/scrum board/scrumBoard"
 
 function IndexHome () {
@@ -34,11 +34,10 @@ function IndexHome () {
                         <h1> ola </h1>
                         imagem e nome
                     </header>
-                    <aside>
+                    <aside className={style.aside}>
                         <Routes>
-                            <Route path="/" element={<MyProject user={user} />} />
-
-                            <Route path="/quadroScrum " element={<ScrumBoard />} />
+                            <Route path="projetos/*" element={<MyProject user={user} />} />
+                            <Route path="projeto/:id" element={<ScrumBoard />} /> 
                         </Routes>
                     </aside>
                 </section>

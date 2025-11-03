@@ -7,6 +7,9 @@ import { FaEdit } from "react-icons/fa";
 import { FaTrashAlt } from "react-icons/fa";
 import deletProject from "../../service/firebase/project/deletProject"
 import EditProject from "../editProject/editProject"
+import { useNavigate } from "react-router-dom"
+import { useProject } from "../../hooks/useContext.jsx"
+import { addData } from "../../service/localStorage/localStorage.js"
 
 
 function MyProject () {
@@ -15,6 +18,10 @@ function MyProject () {
     const [edit, setEdit] = useState(false)
     const [editedProject, setEditedProject] = useState()
     const [user, setUser] = useState()
+    const nav = useNavigate()
+    const {setProjectClick} = useProject()
+    
+
     useEffect(() => {
 
         const unsubscribe = onAuthStateChanged(auth, async(user) => { // verifica se o usuario esta logado, e pega as credencias do usuario 
@@ -43,8 +50,14 @@ function MyProject () {
                     {project.map((item) =>{
                         return(
                             <div key={item.id}>
-                                <p>{item.title}</p>
-                                <p>{item.description}</p>
+                                <div onClick={() => {
+                                    nav(`/home/projeto/${item.title}`)
+                                    setProjectClick(item)
+                                    addData(item)
+                                }}>
+                                    <p>{item.title}</p>
+                                    <p>{item.description}</p>
+                                </div>
 
                                 <div>
                                     <div onClick={() => deletProject(item.id)}><FaTrashAlt /> Excluir</div>

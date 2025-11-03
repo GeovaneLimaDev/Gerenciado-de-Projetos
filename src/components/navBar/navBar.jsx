@@ -18,7 +18,7 @@ function NavBar () {
             <aside>
                 <p>Opções</p>
                 <ul>
-                    <Link to='/home'>
+                    <Link to='/home/projetos'>
                         <li>Meus Projetos</li>
                     </Link>
                 </ul>
