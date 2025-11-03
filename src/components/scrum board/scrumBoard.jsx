@@ -3,16 +3,22 @@ import { useProject } from "../../hooks/useContext.jsx"
 import style from "./scrumBoardCSS.module.css"
 import CreateSubTask from "../createSubtask/createSubTask.jsx"
 import { getData } from "../../service/localStorage/localStorage.js"
+import { useNavigate } from "react-router-dom"
+import { useProject } from "../../hooks/useContext.jsx"
 
-
-
-function ScrumBoard () {
+function ScrumBoard ({user}) {
     const {projectClick} = useProject()
+    const {setProjectClick} = useProject()
+    const nav = useNavigate()
+
     if(!projectClick) {
         const project = getData()
-        console.log(project)
-        
+        if(projectClick.userId != user.uid){
+            nav('/projetos')
+            return
+        }
     }
+
     const [newTesk, setNewtesk] = useState(false)
     
     return (

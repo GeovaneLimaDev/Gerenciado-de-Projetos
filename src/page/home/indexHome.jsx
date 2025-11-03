@@ -37,7 +37,7 @@ function IndexHome () {
                     <aside className={style.aside}>
                         <Routes>
                             <Route path="projetos/*" element={<MyProject user={user} />} />
-                            <Route path="projeto/:id" element={<ScrumBoard />} /> 
+                            <Route path="projeto/:id" element={<ScrumBoard user={user}/>} /> 
                         </Routes>
                     </aside>
                 </section>

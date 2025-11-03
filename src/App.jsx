@@ -3,7 +3,6 @@ import Registration from "./page/login/registration"
 import Login from "./page/login/login"
 import IndexHome from "./page/home/indexHome"
 import { ProjectProvider } from "./hooks/useContext.jsx"
-import { UserProvider } from "./hooks/useContext.jsx"
 
 function App() {
   return (
