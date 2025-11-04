@@ -1,26 +1,51 @@
+import { useState } from "react"
+import { v4 as uuid } from "uuid"
+import addTask from "../../service/firebase/subtask/addTask"
+
 function CreateSubTask ({setNewTesk, projectClick} ) {
-    console.log(projectClick)
+    const [title, setTitle] = useState('')
+    const [description, setDescription] = useState('')
+    const [priority, setPriority] = useState('')
+
+    async function creatTask () {
+        if(!title || !description || !priority){
+            alert('preencha todos os campos antes de prosseguir!')
+        }
+
+        const subtask = {
+            userId: projectClick.userId,
+            id: uuid(),
+            idPai: projectClick.id,
+            title: title,
+            description: description,
+            priority: priority,
+            progress: null,
+        }
+
+        const result = await addTask(subtask)
+        setNewTesk(false)
+    }
     return(
         <div>
             <header>
-                <h3>Criar uma Nova Funcionalidade</h3>
+                <h3>Criar uma Nova Funcionalidade de ({projectClick.title})</h3>
             </header>
             <div>
                 <div>
-                    <input type="text"  placeholder="Titulo da nova funcionalidade"/>
+                    <input onChange={(e) => setTitle(e.target.value) } type="text"  placeholder="Titulo da nova funcionalidade"/>
                 </div>
                 <div>
-                    <textarea placeholder="Descrição"></textarea>
+                    <textarea onChange={(e) => setDescription(e.target.value) } placeholder="Descrição"></textarea>
                 </div>
                 <div>
-                    <select>
+                    <select onChange={(e) => setPriority(e.target.value) }>
                         <option value="">Prioridade</option>
                         <option value="Alta">Alta</option>
                         <option value="Média">Media</option>
                         <option value="Baixa">Baixa</option>
                     </select>
                 </div>
-                <button>Criar</button>
+                <button onClick={creatTask}>Criar</button>
 
                 <button onClick={() => setNewTesk(false)}>cancelar</button>
             </div>

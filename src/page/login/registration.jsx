@@ -2,7 +2,6 @@ import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { registrationFire } from "../../service/firebase/login/registration";
 import { emailValidation, passWordValidation } from "../../utils/validators";
-import addLocalStorang from "../../utils/addLocalStorang";
 
 
 function Registration () {

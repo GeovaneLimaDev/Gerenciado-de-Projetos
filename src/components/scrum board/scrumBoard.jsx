@@ -2,16 +2,20 @@ import { useEffect, useState } from "react"
 import { useProject } from "../../hooks/useContext.jsx"
 import style from "./scrumBoardCSS.module.css"
 import CreateSubTask from "../createSubtask/createSubTask.jsx"
-import { getData } from "../../service/localStorage/localStorage.js"
-import { useNavigate } from "react-router-dom"
+import getTask from "../../service/firebase/subtask/getTask.js"
 
 function ScrumBoard ({user}) {
     const {projectClick} = useProject()
-    const {setProjectClick} = useProject()
-    const nav = useNavigate()    
-
     const [newTesk, setNewtesk] = useState(false)
-    
+    const [subtask, setSubtask] = useState([])
+
+    useEffect(() => {
+        async function busc() {
+            const result = await getTask(user) 
+            setSubtask(result)
+        }
+        busc()
+    })
     return (
         <div className={style.conteiner}>
             <header>
@@ -21,7 +25,15 @@ function ScrumBoard ({user}) {
             </header>
             <section className={style.section}>
                 <div className={style.board}><p>BackLog</p>
-                
+                 <div className={style.carrossel}>
+                    {subtask.map((item) => {
+                        return(
+                            <div key={item.id}>
+                                {item.title}
+                            </div>
+                        )
+                    })}
+                 </div>
                 </div>
                 <div className={style.board}>A fazer
 

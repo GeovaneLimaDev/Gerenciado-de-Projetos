@@ -1,14 +1,14 @@
 import { createContext, useContext, useState } from "react";
-import { getData } from "../service/localStorage/localStorage";
-import { auth } from "../service/firebase/firebaseConfig";
+import { getData } from "../utils/localStorage";
+
 
 /*contexto dos projetos clicados*/
 const ProjectContext = createContext()
 export function ProjectProvider ({children}){
-    const project = getData()
-
+    const project = getData()// passando o ultimo projeto clicado como valor inicial da variavél
     const [projectClick, setProjectClick] = useState(project)
-
+    // isso evite que de erro quando reiniciar a página 
+    
     return (
         <ProjectContext.Provider value={{projectClick, setProjectClick}}>
             {children}

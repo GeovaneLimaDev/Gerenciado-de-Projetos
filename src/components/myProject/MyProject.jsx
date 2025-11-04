@@ -9,7 +9,7 @@ import deletProject from "../../service/firebase/project/deletProject"
 import EditProject from "../editProject/editProject"
 import { useNavigate } from "react-router-dom"
 import { useProject } from "../../hooks/useContext.jsx"
-import { addData } from "../../service/localStorage/localStorage.js"
+import { addData } from "../../utils/localStorage.js"
 
 
 function MyProject () {
@@ -20,6 +20,7 @@ function MyProject () {
     const [user, setUser] = useState()
     const nav = useNavigate()
     const {setProjectClick} = useProject()
+    const [loading, setLoading] = useState(true)
     
 
     useEffect(() => {
@@ -29,6 +30,7 @@ function MyProject () {
                 const result = await getProject(user)// uma vez logado ele chama a função de buscar projetos passando as credenciais para a função
                 setUser(user)
                 setProject(result)
+                setLoading(false)
             }else {
                 setProject([])
             }
@@ -47,6 +49,8 @@ function MyProject () {
             <section>
                 <div>
                     {edit && <EditProject setEdit={setEdit} editedProject= {editedProject} user={user} />}
+                    {loading && <p>Carregando...</p>}
+                    {!loading && project.length === 0 ? <p>Nenhum projeto criado ainda.</p> : ''}
                     {project.map((item) =>{
                         return(
                             <div key={item.id}>
