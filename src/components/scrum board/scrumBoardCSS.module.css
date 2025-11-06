@@ -12,5 +12,13 @@
     height: 100%;
     border: 2px solid black;
     width: 170px;
-    
+    text-align: center;
+}
+.subtaskCard{
+    background-color: rgb(66, 65, 65);
+    margin: 5px 2px;
+    padding: 4px;
+    border-radius: 5px;
+    color: white;
+    text-align: start;
 }
