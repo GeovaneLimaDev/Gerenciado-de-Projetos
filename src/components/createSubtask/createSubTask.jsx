@@ -19,7 +19,7 @@ function CreateSubTask ({setNewTesk, projectClick} ) {
             title: title,
             description: description,
             priority: priority,
-            progress: null,
+            progress: "backlog",
         }
 
         const result = await addTask(subtask)

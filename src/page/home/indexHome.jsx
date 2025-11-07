@@ -1,13 +1,12 @@
 import NavBar from "../../components/navBar/navBar"
 import {auth} from "../../service/firebase/firebaseConfig"
-import { signOut } from "firebase/auth"
 import { Routes, Route} from "react-router-dom"
 import style from "./homeCSS.module.css"
 import { useEffect, useState } from "react"
 import { onAuthStateChanged } from "firebase/auth"
 import { useNavigate } from "react-router-dom"
 import MyProject from "../../components/myProject/MyProject"
-import ScrumBoard from "../../components/scrum board/scrumBoard"
+import ScrumBoard from "../../components/scrumBoard/scrumBoard"
 
 function IndexHome () {
     const nav = useNavigate()
