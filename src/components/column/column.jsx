@@ -12,7 +12,7 @@ function Column({ id, title, tasks }) {
       <p>{title}</p>
       <div className={style.carrossel}>
         {tasks.map((task) => (
-          <Task key={task.id} task={task} />
+          <Task key={task.id} task={task} listTasks={tasks}/>
         ))}
       </div>
     </div>
