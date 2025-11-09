@@ -2,7 +2,7 @@ import { useDraggable } from "@dnd-kit/core"
 import CardTask from "../cardTask/cardTask";
 import { useState } from "react";
 
-function Task ({task, listTasks}) {
+function Task ({task}) {
     const [taskClick, setTaskClick] = useState(false) 
     const { attributes, listeners, setNodeRef, transform } = useDraggable({ id: task.id });
 
@@ -11,7 +11,7 @@ function Task ({task, listTasks}) {
     };
     return (
         <>
-        {taskClick && <CardTask task={task} setTaskClick={setTaskClick} listTasks={listTasks}/>}
+        {taskClick && <CardTask task={task} setTaskClick={setTaskClick} />}
             <div onClick={() => {
                 setTaskClick(true)
             }} ref={setNodeRef}
@@ -19,7 +19,6 @@ function Task ({task, listTasks}) {
             {...listeners} 
             {...attributes} >      
                 <p>{task.title}</p>
-                <p>{task.description}</p>
             </div>
         </>
         

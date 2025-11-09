@@ -35,7 +35,6 @@ function ScrumBoard () {
         const unsubscribe = onAuthStateChanged(auth, async(user) => { // verifica se o usuario esta logado, e pega as credencias do usuario 
             if(user){
                 const result = await getTask(user, projectClick.id)// uma vez logado ele chama a função de buscar sub tasks passando as credenciais para a função
-                console.log(result)
                 setSubtask(result)
             }else {
                 setSubtask([])
