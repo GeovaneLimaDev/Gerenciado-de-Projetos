@@ -3,3 +3,20 @@
   padding: 0px;
   box-sizing: border-box;
 }
+
+[data-type="taskList"] {
+  list-style: none;
+  padding: 0;
+}
+
+[data-type="taskList"] li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+[data-type="taskList"] input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}

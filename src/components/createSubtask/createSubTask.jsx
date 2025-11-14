@@ -4,12 +4,12 @@ import addTask from "../../service/firebase/subtask/addTask"
 
 function CreateSubTask ({setNewTesk, projectClick} ) {
     const [title, setTitle] = useState('')
-    const [description, setDescription] = useState('')
     const [priority, setPriority] = useState('')
 
     async function creatTask () {
-        if(!title || !description || !priority){
+        if(!title || !priority){
             alert('preencha todos os campos antes de prosseguir!')
+            return
         }
 
         const subtask = {
@@ -17,7 +17,7 @@ function CreateSubTask ({setNewTesk, projectClick} ) {
             id: uuid(),
             idPai: projectClick.id,
             title: title,
-            description: description,
+            description: null,
             priority: priority,
             progress: "backlog",
         }
@@ -33,9 +33,6 @@ function CreateSubTask ({setNewTesk, projectClick} ) {
             <div>
                 <div>
                     <input onChange={(e) => setTitle(e.target.value) } type="text"  placeholder="Titulo da nova funcionalidade"/>
-                </div>
-                <div>
-                    <textarea onChange={(e) => setDescription(e.target.value) } placeholder="Descrição"></textarea>
                 </div>
                 <div>
                     <select onChange={(e) => setPriority(e.target.value) }>

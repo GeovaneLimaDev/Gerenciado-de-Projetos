@@ -15,3 +15,5 @@ concluidas:
 o usuario podera mover o item entre colunas mudando seu estado.
 
 cada subtarefa tera a opição de criar checklists, com pequenas tarefas a fazer, ou descrição caso queira.
+
+quando apagar um projeto, as tasks do projeto tbm serão apagadas.
