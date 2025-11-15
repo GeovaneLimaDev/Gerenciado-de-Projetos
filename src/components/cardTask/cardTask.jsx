@@ -10,34 +10,30 @@ import Editor from "../editorText/editor";
 
 function CardTask ({task, setTaskClick}) {
     const [description, setDescription] = useState(task.description)
-    const [value, setValue] = useState('')
+    const [title, setTitle] = useState(task.title)
 
 
     async function update () {
-        console.log(task)
         const up = {
             ...task,
-            description: description
+            description: description,
+            title: title
         }
 
         const result = await updateTask(up)
-        console.log(result)
         setTaskClick(false)
     }
     return (
         <div className={style.conteiner}>
             <div className={style.body}>
                 <div>
-                    <h3>{task.title}</h3>
-                    <div>
+                    <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+
+
                 </div>
-                </div>
-                
                 <div>
-                   <Editor setDescription={setDescription} description={description}/>
-                </div>
-                <div className={style.butsConfig}>
-                    <div onClick={() => {
+                   <Editor setDescription={setDescription} task={task}/>
+                   <div onClick={() => {
                         setTaskClick(false)
                         const result = deletTask(task.id)
                         console.log(result)
@@ -49,9 +45,6 @@ function CardTask ({task, setTaskClick}) {
                         <FaEdit />
                         Salvar
                     </div>
-                </div>
-                <div>
-
                 </div>
             </div>
         </div>

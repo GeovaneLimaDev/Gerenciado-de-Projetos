@@ -1,8 +1,7 @@
-.editor{
+.ProseMirror{
     width: 70%;
     margin: auto;
     border: 1px solid black;
-    padding: 4px;
     height: 400px;
     overflow-y: auto;
     scrollbar-width: none;
