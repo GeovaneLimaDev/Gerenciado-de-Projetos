@@ -8,6 +8,7 @@ function CreateNewProject ({setNewProject}) {
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [dateEnd, setDateEnd] = useState('')
+    const [tag, setTag] = useState('')
 
     function createProject (e) {
         e.preventDefault()
@@ -24,6 +25,7 @@ function CreateNewProject ({setNewProject}) {
             description: description,
             dateEnd: dateEnd ? dateEnd : null, 
             creationDate: new Date(), 
+            tag: tag
         }
 
         const res = addProject(project)
@@ -43,7 +45,13 @@ function CreateNewProject ({setNewProject}) {
                         </textarea>
                     </div>
                     <div>
-                        tegs
+                        <select onChange={(e) => setTag(e.target.value)}>
+                            <option value="">Tag</option>
+                            <option value="Estudo">Estudo</option>
+                            <option value="Freelancer">Freelancer</option>
+                            <option value="Pessoal">Pessoal</option>
+                            <option value="Trabalho">Trabalho</option>
+                        </select>
                     </div>
                     <div>
                         <h5>Data de entrega (opcional)</h5>

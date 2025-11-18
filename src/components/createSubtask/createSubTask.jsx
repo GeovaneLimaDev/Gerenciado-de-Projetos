@@ -37,9 +37,9 @@ function CreateSubTask ({setNewTesk, projectClick} ) {
                 <div>
                     <select onChange={(e) => setPriority(e.target.value) }>
                         <option value="">Prioridade</option>
-                        <option value="Alta">Alta</option>
-                        <option value="Média">Media</option>
-                        <option value="Baixa">Baixa</option>
+                        <option value="3">Alta</option>
+                        <option value="2">Media</option>
+                        <option value="1">Baixa</option>
                     </select>
                 </div>
                 <button onClick={creatTask}>Criar</button>

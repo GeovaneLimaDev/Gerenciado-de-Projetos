@@ -26,13 +26,10 @@ function IndexHome () {
         <div className={style.conteiner}>
             <main className={style.main}>
                 <nav className={style.nav}>
-                    <NavBar />
+                    <NavBar user={user} />
                 </nav>
                 <section className={style.section}>
-                    <header>
-                        <h1> ola </h1>
-                        imagem e nome
-                    </header>
+    
                     <aside className={style.aside}>
                         <Routes>
                             <Route path="projetos/*" element={<MyProject user={user} />} />

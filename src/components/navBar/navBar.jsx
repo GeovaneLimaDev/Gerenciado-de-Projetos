@@ -1,12 +1,29 @@
 import { signOut } from "firebase/auth"
 import { auth } from "../../service/firebase/firebaseConfig"
-import { Link } from "react-router-dom"
-import { useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import { use, useEffect, useState } from "react"
 import CreateNewProject from "../CreateProject/CreateProject"
+import getProject from "../../service/firebase/project/getProject"
+import { useProject } from "../../hooks/useContext.jsx"
 
-function NavBar () {
-    const [newProject, setNewProject] = useState(false) 
+
+
+function NavBar ({user}) {
+    const [newProject, setNewProject] = useState(false)
+    const [project, setProject] = useState([]) 
+    const {setProjectClick} = useProject()
+    const nav = useNavigate()
     
+    useEffect(() => {
+        async function buscProject () {
+            if(!user) return
+            const result = await getProject(user)
+            setProject(result)
+            console.log(result)
+        }
+        buscProject()
+    })
+
     return (
         <menu>
             <header>
@@ -26,7 +43,14 @@ function NavBar () {
             <aside>
                 <p>Projetos</p>
                 <ul>
-                    
+                    {project.map((item) => {
+                        return(
+                            <li onClick={() => {
+                                nav(`/home/projeto/${item.title}`)
+                                setProjectClick(item)
+                            }}>{item.title}</li>
+                        )
+                    })}
                 </ul>
                 <button onClick={() => setNewProject(true)}> +  Novo projeto</button>
                 {newProject && <CreateNewProject setNewProject={setNewProject}/>}
@@ -34,9 +58,11 @@ function NavBar () {
             <aside>
                 <p>Tags</p>
                 <ul>
-                    map
+                    <li>Estudo</li>
+                    <li>Trabalho</li>
+                    <li>Pessoal</li>
+                    <li>Freeelancer</li>
                 </ul>
-                <button>+ Nova Tag</button>
             </aside>
             <section>
                 <p>Configurações</p>

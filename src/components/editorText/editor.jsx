@@ -6,13 +6,10 @@ import Underline from "@tiptap/extension-underline";
 import Link from "@tiptap/extension-link";
 import { useEffect, useState } from 'react'
 import style from './editor.module.css'
+import updateTask from '../../service/firebase/subtask/updateTask';
 
 
 function Editor ({setDescription, task}) {
-    useEffect(() => {
-        const json = task.description
-        editor.commands.setContent(json)
-    },[])
 
     const editor = useEditor({
         extensions: [
@@ -20,13 +17,35 @@ function Editor ({setDescription, task}) {
             TaskList,
             TaskItem,
             ],
-            onUpdate: ({editor}) => {
-                const json = editor.getJSON()
-                setDescription(json)
-
-            },
             content: 'ola',
     });
+
+    useEffect(() => {
+        if (!editor) return
+        const json = task.description
+        editor.commands.setContent(json)
+    }, [editor])
+
+    useEffect(() => {
+        if (!editor) return
+        let timeout
+
+        const handler = () => {
+            clearTimeout(timeout)
+            
+            timeout = setTimeout(() => {
+                const des = editor.getJSON()
+                setDescription(des)           
+            }, 800)
+        }
+
+        editor.on('update', handler)
+
+        return () => {
+            clearTimeout(timeout)
+            editor.off('update', handler)
+        }
+    }, [editor])
 
     
     function setLink() {
@@ -38,6 +57,7 @@ function Editor ({setDescription, task}) {
 
     return (
         <>
+            <EditorContent className={style.ProseMirror}  editor={editor}/>
             <div>
                 <button  onClick={() => editor.chain().focus().toggleBold().run()}>N</button>
                 <button  onClick={() => editor.chain().focus().toggleItalic().run()}>I</button>
@@ -48,7 +68,7 @@ function Editor ({setDescription, task}) {
                 </button>
                 <button onClick={setLink}>🔗 Link</button>
             </div>
-            <EditorContent className={style.ProseMirror}  editor={editor}/>
+           
         </>
     )
 } 
