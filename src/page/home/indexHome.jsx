@@ -7,6 +7,7 @@ import { onAuthStateChanged } from "firebase/auth"
 import { useNavigate } from "react-router-dom"
 import MyProject from "../../components/myProject/MyProject"
 import ScrumBoard from "../../components/scrumBoard/scrumBoard"
+import Config from "../config/indexConfig"
 
 function IndexHome () {
     const nav = useNavigate()
@@ -34,6 +35,7 @@ function IndexHome () {
                         <Routes>
                             <Route path="projetos/*" element={<MyProject user={user} />} />
                             <Route path="projeto/:id" element={<ScrumBoard user={user}/>} /> 
+                            <Route path="configuracaes" element={<Config />} />
                         </Routes>
                     </aside>
                 </section>

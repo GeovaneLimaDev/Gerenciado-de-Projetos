@@ -10,6 +10,9 @@ import EditProject from "../editProject/editProject"
 import { useNavigate } from "react-router-dom"
 import { useProject } from "../../hooks/useContext.jsx"
 import { addData } from "../../utils/localStorage.js"
+import style from "./project.module.css"
+import CardProject from "../cardProject/cardProject.jsx"
+import { FaPlus } from "react-icons/fa"
 
 
 function MyProject () {
@@ -19,7 +22,6 @@ function MyProject () {
     const [editedProject, setEditedProject] = useState()
     const [user, setUser] = useState()
     const nav = useNavigate()
-    const {setProjectClick} = useProject()
     const [loading, setLoading] = useState(true)
     
 
@@ -39,43 +41,25 @@ function MyProject () {
     })
 
     return (
-        <div>
+        <div className={style.body}>
             {newProject && <CreateNewProject setNewProject={setNewProject}/>}
-            <header>
-                <h2>Meus Projetos</h2>
-                <button onClick={() => setNewProject(true)}> Novo Projeto</button>
+            <header className={style.head}>
+                <h2 className={style.titleHead}>Meus Projetos</h2>
+                <button className={style.butNewP} onClick={() => setNewProject(true)}><FaPlus /> Novo Projeto</button>
             </header>
 
-            <section>
-                <div>
-                    {edit && <EditProject setEdit={setEdit} editedProject= {editedProject} user={user} />}
-                    {loading && <p>Carregando...</p>}
-                    {!loading && project.length === 0 ? <p>Nenhum projeto criado ainda.</p> : ''}
-                    {project.map((item) =>{
-                        return(
-                            <div key={item.id}>
-                                <div onClick={() => {
-                                    nav(`/home/projeto/${item.title}`)
-                                    setProjectClick(item)
-                                    addData(item)
-                                }}>
-                                    <p>{item.title}</p>
-                                    <p>{item.description}</p>
-                                </div>
+            <section className={style.section}>  
+                {edit && <EditProject setEdit={setEdit} editedProject= {editedProject} user={user} />}
 
-                                <div>
-                                    <div onClick={() => deletProject(item.id)}><FaTrashAlt /> Excluir</div>
+                {loading && <p>Carregando...</p>}
 
-                                    <div onClick={() => {
-                                        setEdit(true)
-                                        setEditedProject(item)
-                                        
-                                    }}><FaEdit />Editar</div>
-                                </div>
-                            </div>
-                        )
-                    })}
-                </div>
+                {!loading && project.length === 0 ? <p>Nenhum projeto criado ainda.</p> : ''}
+
+                {project.map((item) =>{
+                    return(
+                        <CardProject key={item.id} project={item} setEdit={setEdit} setEditedProject={setEditedProject}/>
+                    )
+                })}
             </section>
         </div>
     )

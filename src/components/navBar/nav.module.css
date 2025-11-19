@@ -1,0 +1,164 @@
+.main{
+    height: 100%;
+    width: 100%;
+    display: grid;
+    align-content: space-between;
+    padding: 20px;
+}
+.link{
+    text-decoration: none;
+    color: black;
+}
+
+.head{
+    margin-bottom: 10px;
+    display: grid;
+    gap: 10px;
+}
+
+.menuContent{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+.menuH1{
+    font-size: 1.8em;
+}
+.menuIcon{
+    font-size: 2em;
+    padding: 5px;
+}
+.menuIcon:hover{
+    background-color: gray;
+    border-radius: 50%;
+    color: white;
+}
+.inputBusc{
+    width: 100%;
+    background: rgb(209, 208, 208);
+    border: 1px solid black;
+    padding: 7px;
+    border-radius: 20px;
+    
+}
+
+.asideOptions{
+    margin-bottom: 10px;
+    display: grid;
+    gap: 7px;
+}
+.titleOptions {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.ulOptions{
+    list-style: none;
+    margin-left: 10px;
+}
+
+.liOptions {
+    display: flex;
+    gap: 5px;
+    font-size: 1.1em;
+}
+.liOptions:hover{
+    font-size: 1.2em;
+    transition: 0.2s;
+}
+
+.asideProject{
+    margin-bottom: 10px;
+    display: grid;
+    gap: 7px;
+}
+
+.titleProject{
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.ulProject{
+    list-style: none;
+    margin-left: 10px;
+}
+
+.liProject {
+    display: flex;
+    gap: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+}
+.liProject:hover{
+    font-size: 1.2em;
+    transition: 0.2s;
+}
+.butNewP{
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 1.1em;
+}
+.butNewP:hover{
+    font-size: 1.2em;
+    transition: 0.2s;
+}
+.butNewP:hover{
+    color: rgb(4, 79, 4);   
+}
+
+.asideTags{
+    margin-bottom: 10px;
+    display: grid;
+    gap: 7px;
+}
+
+.titleTag{
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.ulTag{
+    list-style: none;
+    margin-left: 10px;
+}
+
+.liTag{
+    display: flex;
+    gap: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+}
+.liTag:hover{
+    font-size: 1.2em;
+    transition: 0.2s;
+}
+
+.section{
+    display: grid;
+    gap: 7px;
+}
+
+
+.config{
+    display: flex;
+    gap: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+}
+.config:hover{
+    font-size: 1.2em;
+    transition: 0.2s;
+}
+
+.singOut{
+    display: flex;
+    gap: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+}
+.singOut:hover{
+    font-size: 1.2em;
+    transition: 0.2s;
+    color: rgb(109, 4, 4);
+}
