@@ -15,6 +15,8 @@ function ScrumBoard () {
     const [newTesk, setNewtesk] = useState(false)
     const [subtask, setSubtask] = useState([])
 
+    window.document.title = projectClick.title
+
     const mouseSensor = useSensor(MouseSensor, {
         activationConstraint: {
             distance: 0.6,

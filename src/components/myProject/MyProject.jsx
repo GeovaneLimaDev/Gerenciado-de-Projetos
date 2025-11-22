@@ -24,7 +24,7 @@ function MyProject () {
     const nav = useNavigate()
     const [loading, setLoading] = useState(true)
     
-
+    window.document.title= 'Home'
     useEffect(() => {
 
         const unsubscribe = onAuthStateChanged(auth, async(user) => { // verifica se o usuario esta logado, e pega as credencias do usuario 
@@ -57,7 +57,7 @@ function MyProject () {
 
                 {project.map((item) =>{
                     return(
-                        <CardProject key={item.id} project={item} setEdit={setEdit} setEditedProject={setEditedProject}/>
+                        <CardProject key={item.id} project={item} setEdit={setEdit} setEditedProject={setEditedProject} />
                     )
                 })}
             </section>

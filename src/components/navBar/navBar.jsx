@@ -6,7 +6,7 @@ import CreateNewProject from "../CreateProject/CreateProject"
 import getProject from "../../service/firebase/project/getProject"
 import { useProject } from "../../hooks/useContext.jsx"
 import style from "./nav.module.css"
-import { FaBars } from "react-icons/fa";
+import { FaBars, FaBookmark } from "react-icons/fa";
 import { FaList } from "react-icons/fa";
 import { FaTag } from "react-icons/fa";
 import { FaSignOutAlt } from "react-icons/fa";
@@ -51,6 +51,10 @@ function NavBar ({user}) {
                                 <FaList className={style.iconProj} />
                                 <p className={style.pOptions}> Projetos</p>
                             </li>
+                            <li className={style.liOptions}>
+                                <FaBookmark className={style.iconProj}/>
+                                <p className={style.pOptions}>Favoritos</p>
+                            </li>
                         </Link>
                     </ul>
                 </aside>
@@ -69,6 +73,7 @@ function NavBar ({user}) {
                     <p className={style.butNewP} onClick={() => setNewProject(true)}><strong>+</strong> Novo projeto</p>
                     {newProject && <CreateNewProject setNewProject={setNewProject}/>}
                 </aside>
+                {/*
                 <aside className={style.asideTags}>
                     <p className={style.titleTag}>Tags</p>
                     <ul className={style.ulTag}>
@@ -78,6 +83,7 @@ function NavBar ({user}) {
                         <li className={style.liTag}><FaTag /> Freeelancer</li>
                     </ul>
                 </aside>
+                */}
             </div>
             <section className={style.section}>
                 <Link className={style.link} to={'/home/configuracaes'}>

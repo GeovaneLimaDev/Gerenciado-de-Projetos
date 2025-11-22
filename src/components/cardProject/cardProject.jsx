@@ -2,9 +2,12 @@ import { addData } from "../../utils/localStorage"
 import { useProject } from "../../hooks/useContext"
 import { useNavigate } from "react-router-dom"
 import deletProject from "../../service/firebase/project/deletProject"
-import { FaEdit } from "react-icons/fa"
+import { FaBookmark, FaPen, FaTag } from "react-icons/fa"
 import { FaTrashAlt } from "react-icons/fa"
 import style from './card.module.css'
+import {format, parse} from 'date-fns'
+import deletAll from "../../service/firebase/project/deletAll"
+import { useState } from "react"
 
 export default function CardProject ({project, setEdit, setEditedProject}) {
     const {setProjectClick} = useProject()
@@ -17,10 +20,17 @@ export default function CardProject ({project, setEdit, setEditedProject}) {
                 setProjectClick(project)
                 addData(project)
             }}>
-                <p>{project.title}</p>
-                <p>{project.description}</p>
-                <p>{project.dateEnd}</p>
-                <p>{project.tag}</p>
+                
+                <header >
+                    <p className={style.title}>{project.title}</p>
+                    <div className={style.des}>{project.description}</div>
+                </header>
+                <div className={style.tagContent}>
+                    <p className={project.dateEnd ? style.data : style.hiden}>{project.dateEnd ? format(project.dateEnd, 'dd/MM') : ""}</p>
+
+                    <p className={style.tag}>{project.tag}</p>
+                </div>
+
             </section>
 
             <aside className={style.aside}>
@@ -28,17 +38,23 @@ export default function CardProject ({project, setEdit, setEditedProject}) {
                         barra de progresso
                     </div>
                     <div className={style.butsContent}>
-                        <div onClick={() => {
+
+                        <div id={style.fav} className={style.buts}>
+                            <FaBookmark />
+                        </div>
+                        <div id={style.edit} className={style.buts} onClick={() => {
                             setEdit(true)
                             setEditedProject(project)
                         
                         }}>
-                            <FaEdit />
-                            <p>Editar</p>
+                            <FaPen />
+
                         </div>
-                        <div onClick={() => deletProject(project.id)}>
+                        <div id={style.delet} className={style.buts} onClick={async () => {
+                            const result = await deletAll(project)
+                            console.log(result)
+                        }}>
                             <FaTrashAlt />
-                            <p>Excluir</p>
                          </div>
                         
                     </div>
