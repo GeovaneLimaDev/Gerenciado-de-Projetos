@@ -1,0 +1,8 @@
+.body{
+    background-color: lightgray;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-size: 1.3em;
+    margin-bottom: 10px;
+    text-align: start;
+}

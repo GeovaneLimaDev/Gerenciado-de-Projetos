@@ -1,18 +1,58 @@
 .conteiner{
     height: 100%;
 }
+.head{
+    background-color: gray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    height: 70px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.329);
+}
+
+.headContent{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.volt{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    width: 35px;
+    height: 35px;
+    padding: 1px;
+}
+.volt:hover{
+    background-color: rgb(97, 96, 96);
+    border-radius: 50%;
+}
+.titleHead {
+    font-size: 2em;
+}
+
+.butNewP{
+   background-color: rgb(84, 126, 209);
+   padding: 6px 14px; 
+   border: none;
+   border-radius: 5px;
+   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.388);
+   font-size: 0.9em;
+}
+
+.butNewP:hover{
+    background-color: rgb(18, 18, 114);
+    color: white;
+    transition: 0.2s;
+}
 .section{
     display: grid;
     grid-auto-flow: column;
     justify-content: space-between;
     height: 100%;
-    padding: 10px;
-}
-.board{
-    height: 100%;
-    border: 2px solid black;
-    width: 170px;
-    text-align: center;
+    padding: 15px 30px;
 }
 .subtaskCard{
     background-color: rgb(66, 65, 65);

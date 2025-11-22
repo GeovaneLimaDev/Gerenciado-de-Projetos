@@ -8,12 +8,15 @@ import { auth } from "../../service/firebase/firebaseConfig.js"
 import {DndContext, useSensor, useSensors, MouseSensor, TouchSensor} from "@dnd-kit/core"
 import Column from "../column/column.jsx"
 import updateTask from "../../service/firebase/subtask/updateTask.js"
-
+import { FaArrowLeft } from "react-icons/fa"
+import { useNavigate } from "react-router-dom"
 
 function ScrumBoard () {
     const {projectClick} = useProject()
     const [newTesk, setNewtesk] = useState(false)
     const [subtask, setSubtask] = useState([])
+    const [start, setStart] = useState(false)
+    const nav = useNavigate()
 
     window.document.title = projectClick.title
 
@@ -44,7 +47,10 @@ function ScrumBoard () {
         })
         return () => unsubscribe()
     }, [newTesk, subtask])
-
+    function headleDragStart (event) {
+        const {active, over} = event
+        setStart(active.id)
+    }
     function headleDragEnd(event) {
         const {active, over} = event
          if(over) {
@@ -62,37 +68,52 @@ function ScrumBoard () {
             
             setSubtask([...taskList, newTask])
             const result = updateTask(newTask)
+            setStart(false)
         
         }
     }
     return (
         <div className={style.conteiner}>
-            <header>
-                <h2>{projectClick.title}</h2>
-                <button onClick={() => setNewtesk(true)}>Criar funcionalidade</button>
+            <header className={style.head}>
+                <div className={style.headContent}>
+                    <p onClick={() => nav('/home/projetos')} className={style.volt}>
+                        <FaArrowLeft  />
+                    </p>
+
+                    <h2 className={style.titleHead}>{projectClick.title}</h2>
+                </div>
+
+                <div>
+                    <button className={style.butNewP} onClick={() => setNewtesk(true)}>Criar funcionalidade</button>
+                    <button>Notas Rapidas</button>
+                </div>
                 {newTesk && <CreateSubTask setNewTesk={setNewtesk} projectClick={projectClick} />}
             </header>
             <section className={style.section}>
-                <DndContext sensors={sensors} onDragEnd={headleDragEnd}>
+                <DndContext sensors={sensors} onDragEnd={headleDragEnd} onDragStart={headleDragStart}>
                     <Column
                         id="backlog"
                         title="Backlog"
                         tasks={subtask.filter(item => item.progress === 'backlog')}
+                        start={start}
                     />
                     <Column
                         id="afazer"
                         title="A Fazer"
                         tasks={subtask.filter(item => item.progress === 'afazer')}
+                        start={start}
                     />
                     <Column
                         id="fazendo"
                         title="Fazendo"
                         tasks={subtask.filter(item => item.progress === 'fazendo')}
+                        start={start}
                     />
                     <Column
                         id="feito"
                         title="Feito"
                         tasks={subtask.filter(item => item.progress === 'feito')}
+                        start={start}
                     />
                 </DndContext>
             </section>

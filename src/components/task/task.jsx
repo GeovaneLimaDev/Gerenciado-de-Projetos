@@ -1,8 +1,9 @@
 import { useDraggable } from "@dnd-kit/core"
 import CardTask from "../cardTask/cardTask";
 import { useState } from "react";
+import style from "./task.module.css"
 
-function Task ({task}) {
+function Task ({task, start}) {
     const [taskClick, setTaskClick] = useState(false) 
     const { attributes, listeners, setNodeRef, transform } = useDraggable({ id: task.id });
 
@@ -12,7 +13,7 @@ function Task ({task}) {
     return (
         <>
         {taskClick && <CardTask task={task} setTaskClick={setTaskClick} />}
-            <div onClick={() => {
+            <div className={style.body} onClick={() => {
                 setTaskClick(true)
             }} ref={setNodeRef}
             style={styleTrasform}

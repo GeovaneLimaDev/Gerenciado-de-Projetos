@@ -6,12 +6,9 @@ import CreateNewProject from "../CreateProject/CreateProject"
 import getProject from "../../service/firebase/project/getProject"
 import { useProject } from "../../hooks/useContext.jsx"
 import style from "./nav.module.css"
-import { FaBars, FaBookmark } from "react-icons/fa";
-import { FaList } from "react-icons/fa";
-import { FaTag } from "react-icons/fa";
-import { FaSignOutAlt } from "react-icons/fa";
-import { FaRegEdit } from "react-icons/fa";
-import { FaG, FaGear } from "react-icons/fa6";
+import { FaBars, FaBookmark, FaList, FaSignOutAlt, FaTag, FaRegEdit, FaRegStickyNote } from "react-icons/fa";
+import { FaGear } from "react-icons/fa6";
+
 
 
 function NavBar ({user}) {
@@ -48,11 +45,20 @@ function NavBar ({user}) {
                     <ul className={style.ulOptions}>
                         <Link to='/home/projetos' className={style.link}>
                             <li className={style.liOptions}>
-                                <FaList className={style.iconProj} />
+                                <FaList className={style.icon} />
                                 <p className={style.pOptions}> Projetos</p>
                             </li>
+                        </Link>
+                        <Link to='/home/notas' className={style.link}>
                             <li className={style.liOptions}>
-                                <FaBookmark className={style.iconProj}/>
+                                <FaRegStickyNote className={style.icon}/>
+                                <p className={style.pOptions}>Notas</p>
+                            </li>
+                        </Link>
+                        
+                        <Link to='/home/favoritos' className={style.link}>
+                            <li className={style.liOptions}>
+                                <FaBookmark className={style.icon}/>
                                 <p className={style.pOptions}>Favoritos</p>
                             </li>
                         </Link>
