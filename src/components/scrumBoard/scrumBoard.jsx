@@ -83,7 +83,7 @@ function ScrumBoard () {
                     <h2 className={style.titleHead}>{projectClick.title}</h2>
                 </div>
 
-                <div>
+                <div className={style.butsHead}>
                     <button className={style.butNewP} onClick={() => setNewtesk(true)}>Criar funcionalidade</button>
                     <button>Notas Rapidas</button>
                 </div>

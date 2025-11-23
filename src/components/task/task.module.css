@@ -1,8 +1,76 @@
 .body{
-    background-color: lightgray;
+    background-color: rgb(199, 199, 199);
     padding: 10px 15px;
     border-radius: 10px;
     font-size: 1.3em;
     margin-bottom: 10px;
     text-align: start;
+}
+.titleContent{
+    display: grid;
+    justify-content: space-between;
+    align-items: center;
+    grid-template-columns: 1fr 0.1fr;
+    gap: 10px;
+    padding-bottom: 10px;
+}
+.aside{
+    border-top: 1px solid rgba(0, 0, 0, 0.6);
+}
+
+.title{
+    background-color: transparent;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 0.9em;
+    padding: 5px;   
+    margin: 10px 0px 10px 0px; 
+    border: 1px solid rgb(90, 89, 89);
+}
+.text{
+    background-color: transparent;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 0.9em;
+    padding: 5px;
+    scrollbar-width: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.but{
+    display: block;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3em;
+    border-radius: 50%;
+    border-radius: 50%;
+}
+.but:hover{
+    background-color: rgb(164, 162, 162);
+    transition: 0.2s;
+}
+.deletContent{
+    display: flex;
+    justify-content: end;
+}
+.butDelet{
+    width: 30px;
+    height: 30px;
+    margin-top: 5px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
+}
+.butDelet:hover{
+    background-color: gray;
+}
+
+
+.hiden{
+    display: none;
 }

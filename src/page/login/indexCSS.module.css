@@ -1,0 +1,97 @@
+.conteiner{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.body{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: gray;
+    width: 70%;
+    height: 75%;
+    border-radius: 15px;
+    box-shadow: 0px 5px px rgba(0, 0, 0, 0.331);
+}
+.content{
+    display: grid;
+}
+.formContent{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background-color: rgba(255, 228, 196, 0.358);
+}
+.form{
+    width: 90%;
+}
+.title{
+    font-size: 2.5em;
+    margin-bottom: 25px;
+    text-align: center;
+}
+.label{
+    margin-left: 70px;
+    font-size: 1.2em;
+    margin-bottom: 2px;
+}
+.input{
+    margin: auto;
+    width: 80%;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.1em;
+    background-color: rgba(255, 255, 255, 0.658);
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.342);
+
+}
+.butsContent{
+    display: grid;
+    width: 70%;
+    margin: auto;
+}
+.linkContent{
+    display: flex;
+    justify-content: space-between;
+}
+.linkReact{
+    text-decoration: none;
+    color: black;
+}
+.link{
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+.but{
+    display: block;
+    margin: auto;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    padding: 10px;
+    width: 140px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(209, 208, 208);
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.342);
+    margin-top: 10px;
+    cursor: pointer;
+}
+.but:hover{
+    background-color: rgb(110, 254, 110);
+}
+.google{
+    display: block;
+    margin: auto;
+    font-size: 1.2em;
+    padding: 10px;
+    width: 300px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(209, 208, 208);
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.342);
+    margin-top: 10px;
+    cursor: pointer;
+}

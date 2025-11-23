@@ -1,12 +1,16 @@
 import { useState } from "react"
 import { v4 as uuid } from "uuid"
 import addTask from "../../service/firebase/subtask/addTask"
+import style from "./subTask.module.css"
+import { FaArrowLeft } from "react-icons/fa";
+
 
 function CreateSubTask ({setNewTesk, projectClick} ) {
     const [title, setTitle] = useState('')
     const [priority, setPriority] = useState('')
 
-    async function creatTask () {
+    async function creatTask (e) {
+        e.preventDefault()
         if(!title || !priority){
             alert('preencha todos os campos antes de prosseguir!')
             return
@@ -21,31 +25,36 @@ function CreateSubTask ({setNewTesk, projectClick} ) {
             priority: priority,
             progress: "backlog",
         }
-
-        const result = await addTask(subtask)
+        
         setNewTesk(false)
+        const result = await addTask(subtask)
+        
     }
     return(
-        <div>
-            <header>
-                <h3>Criar uma Nova Funcionalidade de ({projectClick.title})</h3>
-            </header>
-            <div>
-                <div>
-                    <input onChange={(e) => setTitle(e.target.value) } type="text"  placeholder="Titulo da nova funcionalidade"/>
+        <div className={style.conteiner}>
+            <main className={style.body}>
+                <div onClick={() => setNewTesk(false)} className={style.butOut}>
+                    <FaArrowLeft />
                 </div>
-                <div>
-                    <select onChange={(e) => setPriority(e.target.value) }>
-                        <option value="">Prioridade</option>
-                        <option value="3">Alta</option>
-                        <option value="2">Media</option>
-                        <option value="1">Baixa</option>
-                    </select>
-                </div>
-                <button onClick={creatTask}>Criar</button>
-
-                <button onClick={() => setNewTesk(false)}>cancelar</button>
-            </div>
+                
+                <h2 className={style.title}>Criar uma Nova Funcionalidade de ({projectClick.title})</h2>
+                <form className={style.form}>
+                    <div className={style.content}>
+                        <label className={style.label} htmlFor="title">Titulo</label>
+                        <input id="title" className={style.input} onChange={(e) => setTitle(e.target.value) } type="text"  placeholder="Titulo da nova funcionalidade"/>
+                    </div>
+                    <div className={style.content}>
+                        <label className={style.label} htmlFor="prio">Prioridade</label>
+                        <select id="prio" className={style.select} onChange={(e) => setPriority(e.target.value) }>
+                            <option value="">Prioridade</option>
+                            <option value="3">Alta</option>
+                            <option value="2">Media</option>
+                            <option value="1">Baixa</option>
+                        </select>
+                    </div>
+                    <button className={style.but} onClick={creatTask}>Criar</button>
+                </form>
+            </main>
 
         </div>
     )

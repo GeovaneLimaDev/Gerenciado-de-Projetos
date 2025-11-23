@@ -9,7 +9,7 @@ function Registration () {
     const [email, setEmail] = useState('')
     const [password, setPassWord] = useState('')
     const nav = useNavigate()
-     async function seveData (e) {
+    async function seveData (e) {
         e.preventDefault()
 
         if(!name || !email ||!password){

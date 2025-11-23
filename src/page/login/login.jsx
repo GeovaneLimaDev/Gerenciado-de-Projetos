@@ -5,6 +5,7 @@ import loginGoogle from "../../service/firebase/login/loginGoogle"
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../service/firebase/firebaseConfig";
 import RecoverPass from "../../components/popupRecover/RecoverForm";
+import style from "./indexCSS.module.css"
 
 
 
@@ -13,7 +14,7 @@ function Login () {
     const [password, setPassWord] = useState('')
     const [recover, setRecover] = useState(false)
     const nav = useNavigate()
-
+    document.title = 'Login'
      // useEffect observa se o usuario está logado
     useEffect(() => {
         onAuthStateChanged(auth, (usuario) => {
@@ -53,38 +54,42 @@ function Login () {
     }
 
     return(
-        <div>
-            <main>
-                <h1>Fazer Login</h1>
+        <div className={style.conteiner}>
+            <main className={style.body}>
+                <div>
+                    imagem
+                </div>
+                <div className={style.formContent}>
+                    <form action="" className={style.form}>
+                        <h1 className={style.title}>Fazer Login</h1>
+                        <div className={style.content}>
+                            <label className={style.label} htmlFor="email">Email</label>
 
-                <form action="">
-                    <div>
-                        <input onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Email" />
-                    </div>
-                    <div>
-                        <input onChange={(e) => setPassWord(e.target.value)} type="password" placeholder="Sua senha"/>
-                    </div>
-                    <div>
-                        <div>
-                            <Link to={"/cadastro"}>
-                                <p>Criar Conta</p>
-                            </Link>
-                            
-                            <p onClick={( ) => {
-                                setRecover(true)
-                            }}>esqueci minha senha!</p>
+                            <input className={style.input} id="email" onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Email" />
                         </div>
+                        <div className={style.content}>
+                            <label className={style.label} htmlFor="pass">Senha</label>
 
-                        <button onClick={saveDate}>Entrar</button>
-                    </div>
-                    {recover && <RecoverPass setRecover={setRecover} />}
-
-                    <button onClick={google}>
-                        entrar com google
-                    </button>
-                </form>
-
-                
+                            <input className={style.input} id="pass" onChange={(e) => setPassWord(e.target.value)} type="password" placeholder="Sua senha"/>
+                        </div>
+                        <div className={style.butsContent}>
+                            <div className={style.linkContent}>
+                                <Link to={"/cadastro"} className={style.linkReact}>
+                                    <p className={style.link}>Criar Conta</p>
+                                </Link>
+                    
+                                <p onClick={( ) => {
+                                    setRecover(true)
+                                }} className={style.link}>esqueci minha senha!</p>
+                            </div>
+                            <button className={style.but} onClick={saveDate}>Entrar</button>
+                        </div>
+                        {recover && <RecoverPass setRecover={setRecover} />}
+                        <button className={style.google} onClick={google}>
+                            entrar com google
+                        </button>
+                    </form>
+                </div>                
             </main>
         </div>
 

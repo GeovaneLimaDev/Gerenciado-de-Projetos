@@ -32,14 +32,17 @@
 .titleHead {
     font-size: 2em;
 }
-
+.butsHead{
+    display: flex;
+    gap: 10px;
+}
 .butNewP{
    background-color: rgb(84, 126, 209);
    padding: 6px 14px; 
    border: none;
    border-radius: 5px;
    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.388);
-   font-size: 0.9em;
+   font-size: 1.1em;
 }
 
 .butNewP:hover{
