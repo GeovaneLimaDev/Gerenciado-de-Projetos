@@ -62,6 +62,10 @@ function NavBar ({user}) {
                                 <p className={style.pOptions}>Favoritos</p>
                             </li>
                         </Link>
+
+                        <li>
+                            Calendário
+                        </li>
                     </ul>
                 </aside>
                 <aside className={style.asideProject} >

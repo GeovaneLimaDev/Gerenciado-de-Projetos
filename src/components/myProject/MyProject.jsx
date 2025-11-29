@@ -3,13 +3,8 @@ import CreateNewProject from "../CreateProject/CreateProject"
 import getProject from "../../service/firebase/project/getProject"
 import { onAuthStateChanged } from "firebase/auth"
 import { auth } from "../../service/firebase/firebaseConfig"
-import { FaEdit } from "react-icons/fa";
-import { FaTrashAlt } from "react-icons/fa";
-import deletProject from "../../service/firebase/project/deletProject"
 import EditProject from "../editProject/editProject"
 import { useNavigate } from "react-router-dom"
-import { useProject } from "../../hooks/useContext.jsx"
-import { addData } from "../../utils/localStorage.js"
 import style from "./project.module.css"
 import CardProject from "../cardProject/cardProject.jsx"
 import { FaPlus } from "react-icons/fa"
@@ -45,7 +40,7 @@ function MyProject () {
             {newProject && <CreateNewProject setNewProject={setNewProject}/>}
             <header className={style.head}>
                 <h2 className={style.titleHead}>Meus Projetos</h2>
-                <button className={style.butNewP} onClick={() => setNewProject(true)}><FaPlus /> Novo Projeto</button>
+                <button tabIndex={0} className={style.butNewP} onClick={() => setNewProject(true)}><FaPlus /> Novo Projeto</button>
             </header>
 
             <section className={style.section}>  

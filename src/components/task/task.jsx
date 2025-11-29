@@ -11,6 +11,7 @@ function Task ({task}) {
     const { attributes, listeners, setNodeRef, transform } = useDraggable({ id: task.id }); // algun atributos que o dnd precisa pra funcionar
     const [title, setTitle] = useState(task.title)
     const [description, setDescription] = useState(task.description)
+    const [priority, setPriority] = useState(task.priority)
 
     const styleTrasform = {
         transform: transform ? `translate3d(${transform.x}px, ${transform.y}px, 0)` : undefined,// configurações de estilo do drag and drop
@@ -18,9 +19,9 @@ function Task ({task}) {
     
     //useEffect para o auto salve da area de edita subTask 
     useEffect(() => {
-        if(title === task.title && description === task.description) return // inpede que faça atualizações sem ter atualização
+        if(title === task.title && description === task.description && priority === task.priority) return // inpede que faça atualizações sem ter atualização
         let timeout 
-
+        console.log('ola')
         function save (){
             clearTimeout(timeout)
 
@@ -29,7 +30,8 @@ function Task ({task}) {
                 const obj = {
                     ...task,
                     description: description,
-                    title: title
+                    title: title,
+                    priority: priority
                 }
 
                 const result = updateTask(obj)
@@ -41,7 +43,7 @@ function Task ({task}) {
         return () => {
             clearTimeout(timeout)
         }
-    }, [title, description])
+    }, [title, description, priority])
 
     return (
         <>
@@ -69,9 +71,12 @@ function Task ({task}) {
                         <textarea onChange={(e) => setDescription(e.target.value)} value={description ? description : ""} placeholder="Anotações importantes da tesk" rows="5" className={style.text} name="" id=""></textarea>
                     </div>
                     <div className={style.deletContent}>
-                        {/*<select name="" id="">
-                            <option value="">avatar</option>
-                        </select>*/}
+                        <select value={priority} onChange={(e) => setPriority(e.target.value)} name="" id="" className={style.select}>
+                            <option className={style.opaco} value="">Prioridade</option>
+                            <option value="Alta">Alta</option>
+                            <option value="Média">Média</option>
+                            <option value="Baixa">Baixa</option>
+                        </select>
                         <p onClick={() => deletTask(task.id)} className={style.butDelet}>
                             <FaTrashAlt />
                         </p>

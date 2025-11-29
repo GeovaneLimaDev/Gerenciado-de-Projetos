@@ -21,12 +21,16 @@
     font-family: Arial, Helvetica, sans-serif;
     display: grid;
     align-content: space-between;
+    cursor: pointer;
 }
 .title{
     font-size: 2em;
     margin: 10px 0px 15px 0px;
+ 
 }
 .des{
+    display: block;
+    margin: auto;
     font-size: 1.1em;
     text-indent: 20px;
 }

@@ -7,11 +7,10 @@ import { FaArrowLeft } from "react-icons/fa";
 
 function CreateSubTask ({setNewTesk, projectClick} ) {
     const [title, setTitle] = useState('')
-    const [priority, setPriority] = useState('')
 
     async function creatTask (e) {
         e.preventDefault()
-        if(!title || !priority){
+        if(!title){
             alert('preencha todos os campos antes de prosseguir!')
             return
         }
@@ -22,7 +21,7 @@ function CreateSubTask ({setNewTesk, projectClick} ) {
             idPai: projectClick.id,
             title: title,
             description: null,
-            priority: priority,
+            priority: null,
             progress: "backlog",
         }
         
@@ -43,16 +42,7 @@ function CreateSubTask ({setNewTesk, projectClick} ) {
                         <label className={style.label} htmlFor="title">Titulo</label>
                         <input id="title" className={style.input} onChange={(e) => setTitle(e.target.value) } type="text"  placeholder="Titulo da nova funcionalidade"/>
                     </div>
-                    <div className={style.content}>
-                        <label className={style.label} htmlFor="prio">Prioridade</label>
-                        <select id="prio" className={style.select} onChange={(e) => setPriority(e.target.value) }>
-                            <option value="">Prioridade</option>
-                            <option value="3">Alta</option>
-                            <option value="2">Media</option>
-                            <option value="1">Baixa</option>
-                        </select>
-                    </div>
-                    <button className={style.but} onClick={creatTask}>Criar</button>
+                    <button type="submit" className={style.but} onClick={creatTask}>Criar</button>
                 </form>
             </main>
 

@@ -1,20 +1,47 @@
 .conteiner{
+    position: fixed;
+    top: 0px;
+    left: 0px;
     height: 100vh;
+    width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: rgba(0, 0, 0, 0.489);
 }
 .body{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    background-color: gray;
-    width: 70%;
-    height: 75%;
+    background-color: wheat;
+    width: 650px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     border-radius: 15px;
-    box-shadow: 0px 5px px rgba(0, 0, 0, 0.331);
+}
+.butOut{
+    font-size: 1.7em;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    padding: 5px;
+    cursor: pointer;
+    margin-right: 450px;
+}
+.butOut:hover{
+    background-color: gray;
+    border-radius: 50%;
+    transition: 0.2s;
 }
 .content{
     display: grid;
+}
+.p{
+    text-align: center;
+    font-size: 1.4em;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 10px;
 }
 .formContent{
     display: flex;
@@ -48,32 +75,6 @@
     box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.342);
 
 }
-.butsContent{
-    display: grid;
-    width: 70%;
-    margin: auto;
-}
-.linkContent{
-    display: flex;
-    justify-content: space-between;
-}
-.linkContentC{
-    display: flex;
-    justify-content: end;
-    margin-right: 70px;
-}
-.linkReact{
-    text-decoration: none;
-    color: black;
-}
-.link{
-    font-size: 1.2em;
-    margin-bottom: 10px;
-}
-.link:hover{
-    text-decoration: underline;
-    color: blue;
-}
 .but{
     display: block;
     margin: auto;
@@ -90,25 +91,4 @@
 }
 .but:hover{
     background-color: rgb(110, 254, 110);
-}
-.google{
-    display: block;
-    margin: auto;
-    font-size: 1.2em;
-    padding: 8px;
-    width: 300px;
-    border: none;
-    border-radius: 5px;
-    background-color: rgb(209, 208, 208);
-    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.342);
-    margin-top: 10px;
-    cursor: pointer;
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
-}
-
-.iconGoogle{
-    font-size: 2em;
 }

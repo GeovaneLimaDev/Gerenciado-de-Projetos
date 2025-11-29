@@ -4,9 +4,9 @@ import login from "../../service/firebase/login/login"
 import loginGoogle from "../../service/firebase/login/loginGoogle"
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../service/firebase/firebaseConfig";
-import RecoverPass from "../../components/popupRecover/RecoverForm";
+import RecoverPass from "./popupRecover/RecoverForm";
 import style from "./indexCSS.module.css"
-
+import { FcGoogle } from "react-icons/fc";
 
 
 function Login () {
@@ -85,8 +85,10 @@ function Login () {
                             <button className={style.but} onClick={saveDate}>Entrar</button>
                         </div>
                         {recover && <RecoverPass setRecover={setRecover} />}
+
                         <button className={style.google} onClick={google}>
-                            entrar com google
+                            <FcGoogle className={style.iconGoogle} />
+                            <p>entrar com google</p>
                         </button>
                     </form>
                 </div>                

@@ -53,9 +53,21 @@
     transition: 0.2s;
 }
 .deletContent{
-    display: flex;
-    justify-content: end;
+    display: grid;
+    grid-template-columns: 2fr 0.5fr;
+    align-items: center;
 }
+.select{
+    background-color: transparent;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 0.9em;
+    padding: 5px;   
+    margin: 10px 0px 10px 0px; 
+    border: 1px solid rgb(90, 89, 89);
+    color: rgb(84, 84, 84);
+}
+
 .butDelet{
     width: 30px;
     height: 30px;
@@ -65,7 +77,9 @@
     justify-content: center;
     align-items: center;
     padding: 2px;
+    margin: auto;
 }
+
 .butDelet:hover{
     background-color: gray;
 }

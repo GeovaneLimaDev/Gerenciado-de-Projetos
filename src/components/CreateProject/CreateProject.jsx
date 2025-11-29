@@ -28,7 +28,8 @@ function CreateNewProject ({setNewProject}) {
             description: description,
             dateEnd: dateEnd ? dateEnd : null, 
             creationDate: new Date(), 
-            tag: tag
+            tag: tag,
+            favorite: false
         }
         const res = addProject(project)
         

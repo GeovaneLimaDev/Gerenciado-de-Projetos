@@ -1,13 +1,12 @@
 import { addData } from "../../utils/localStorage"
 import { useProject } from "../../hooks/useContext"
 import { useNavigate } from "react-router-dom"
-import deletProject from "../../service/firebase/project/deletProject"
-import { FaBookmark, FaPen, FaTag } from "react-icons/fa"
-import { FaTrashAlt } from "react-icons/fa"
+import { FaBookmark, FaPen, FaTag, FaTrashAlt } from "react-icons/fa"
 import style from './card.module.css'
-import {format, parse} from 'date-fns'
+import {format} from 'date-fns'
 import deletAll from "../../service/firebase/project/deletAll"
 import { useState } from "react"
+import updatProject from "../../service/firebase/project/updateProject"
 
 export default function CardProject ({project, setEdit, setEditedProject}) {
     const {setProjectClick} = useProject()
@@ -15,7 +14,7 @@ export default function CardProject ({project, setEdit, setEditedProject}) {
 
     return (
         <div className={style.body}>
-            <section className={style.section} onClick={() => {
+            <section tabIndex={0} className={style.section} onClick={() => {
                 nav(`/home/projeto/${project.title}`)
                 setProjectClick(project)
                 addData(project)
@@ -39,7 +38,23 @@ export default function CardProject ({project, setEdit, setEditedProject}) {
                     </div>
                     <div className={style.butsContent}>
 
-                        <div id={style.fav} className={style.buts}>
+                        <div onClick={() => {
+                            if(project.favorite === true){
+                                const obj  = {
+                                    ...project,
+                                    favorite: false
+                                } 
+                                const result = updatProject(obj)
+                            }else if(project.favorite === false) {
+                                const obj  = {
+                                    ...project,
+                                    favorite: true
+                                } 
+                                const result = updatProject(obj)
+                            }
+
+
+                        }} id={style.fav} className={style.buts}>
                             <FaBookmark />
                         </div>
                         <div id={style.edit} className={style.buts} onClick={() => {
