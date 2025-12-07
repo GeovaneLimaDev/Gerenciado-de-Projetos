@@ -1,8 +1,68 @@
-.ProseMirror{
-    width: 70%;
+.body{
+    height: 100%;
+    display: grid;
+    grid-template-rows: 0.5fr 3fr 0.5fr;
+}
+.input {
+    background-color: transparent;
     margin: auto;
-    border: 1px solid black;
-    height: 400px;
-    overflow-y: auto;
-    scrollbar-width: none;
+    margin-bottom: 10px;
+    width: 90%;
+    padding: 10px 10px 0px 10px;
+    font-size: 1.5em;
+    border: none;
+    border-bottom: 1px solid rgb(93, 92, 92);
+}
+.editor {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+.editor :global(.ProseMirror) {
+    width: 90%;
+    padding: 10px;
+    font-size: 1.3em;
+}
+/*Placeholder*/
+.editor :global(.ProseMirror p.is-empty::before) {
+    content: attr(data-placeholder);
+    color: #565656;
+}
+.contentBut{
+    background-color: rgb(139, 139, 139);
+    border-radius: 0px 0px 10px 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    padding: 10px;
+}
+.ative{
+    background-color: rgb(92, 92, 92);
+    border: none;
+    font-size: 1.1em;
+    border-left: 1px solid rgba(0, 0, 0, 0.253);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ative:hover{
+    background-color: rgb(97, 97, 97);
+    color: white;
+    transition: 0.2s;
+}
+.but{
+    border: none;
+    background-color: rgb(139, 139, 139);
+    font-size: 1.1em;
+    border-left: 1px solid rgba(0, 0, 0, 0.253);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.but:hover{
+    background-color: gray;
+    transition: 0.2s;
+}
+#butn{
+    border: none;
 }

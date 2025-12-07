@@ -2,26 +2,35 @@ import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import TaskList from '@tiptap/extension-task-list'
 import TaskItem from '@tiptap/extension-task-item'
-import Link from "@tiptap/extension-link";
 import { useEffect, useState } from 'react'
 import style from './editor.module.css'
-import updateTask from '../../service/firebase/subtask/updateTask';
+import { FaCheckSquare, FaLink, FaListUl } from "react-icons/fa";
+import Placeholder from '@tiptap/extension-placeholder'
 
+function Editor ({setText, setTitle, title, note}) {
+    const text = note ? note.text : ""
+    const [negrito, setNegrito] = useState(false)
+    const [italico, setItalico] = useState(false)
+    const [sublinhado, setSublinhado] = useState(false)
+    const [cheklist, setCheklist] = useState(false)
+    const [list, setList] = useState(false)
 
-function Editor ({setDescription, task}) {
-
+const placehoder = text ? "" : "Escreva uma nota.."
     const editor = useEditor({
         extensions: [
             StarterKit,
             TaskList,
             TaskItem,
-            ],
-            content: 'ola',
+            Placeholder.configure({
+                placeholder: "Escreva uma nota...",
+            }),
+            ]
     });
 
     useEffect(() => {
         if (!editor) return
-        const json = task.description
+        if(!note) return
+        const json = note.text
         editor.commands.setContent(json)
     }, [editor])
 
@@ -34,7 +43,7 @@ function Editor ({setDescription, task}) {
             
             timeout = setTimeout(() => {
                 const des = editor.getJSON()
-                setDescription(des)           
+                setText(des)           
             }, 800)
         }
 
@@ -55,20 +64,41 @@ function Editor ({setDescription, task}) {
     }
 
     return (
-        <>
-            <EditorContent className={style.ProseMirror}  editor={editor}/>
+        <div className={style.body}>  
+            <input className={style.input} type="text" value={title} placeholder='Titulo da nota...' onChange={(e) => setTitle(e.target.value)}/>
+
             <div>
-                <button  onClick={() => editor.chain().focus().toggleBold().run()}>N</button>
-                <button  onClick={() => editor.chain().focus().toggleItalic().run()}>I</button>
-                <button onClick={() => editor.chain().focus().toggleBulletList().run()}>.lista</button>
-                <button onClick={() => editor.chain().focus().toggleUnderline().run()}>S</button>
-                <button onClick={() => editor.chain().focus().toggleTaskList().run()}>
-                ✅ Checklist
+                <EditorContent editor={editor} className={style.editor}/>
+            </div>
+
+            <div className={style.contentBut}>
+                <button id={style.butn} className={`${negrito ? style.ative : style.but}`}  
+                onClick={() => {
+                    editor.chain().focus().toggleBold().run()
+                    !negrito?setNegrito(true):setNegrito(false) 
+                }}>N</button>
+
+                <button className={`${italico ? style.ative : style.but}`}  onClick={() => {editor.chain().focus().toggleItalic().run()
+                    !italico?setItalico(true):setItalico(false)
+                }}>I</button>
+
+                <button className={`${sublinhado ? style.ative : style.but}`} onClick={() => {editor.chain().focus().toggleUnderline().run()
+                    !sublinhado?setSublinhado(true):setSublinhado(false)
+                }}>S</button>
+
+                <button className={`${list ? style.ative : style.but}`} onClick={() => {editor.chain().focus().toggleBulletList().run()
+                    !list?setList(true):setList(false)
+                }}><FaListUl /></button>
+
+                <button className={`${cheklist ? style.ative : style.but}`} onClick={() =>{ editor.chain().focus().toggleTaskList().run()
+                    !cheklist?setCheklist(true):setCheklist(false)
+                }}><FaCheckSquare /> 
                 </button>
-                <button onClick={setLink}>🔗 Link</button>
+
+                <button className={style.but} onClick={setLink}><FaLink /> </button>
             </div>
            
-        </>
+        </div>
     )
 } 
 
