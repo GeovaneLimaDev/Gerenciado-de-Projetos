@@ -21,10 +21,6 @@ function CreateSubTask ({setNewTesk, projectClick} ) {
             idPai: projectClick.id,
             title: title,
             description: null,
-<<<<<<< HEAD
-            priority: null,
-=======
->>>>>>> Notas
             progress: "backlog",
         }
         
@@ -45,11 +41,7 @@ function CreateSubTask ({setNewTesk, projectClick} ) {
                         <label className={style.label} htmlFor="title">Titulo</label>
                         <input id="title" className={style.input} onChange={(e) => setTitle(e.target.value) } type="text"  placeholder="Titulo da nova funcionalidade"/>
                     </div>
-<<<<<<< HEAD
-                    <button type="submit" className={style.but} onClick={creatTask}>Criar</button>
-=======
                     <button className={style.but} onClick={creatTask}>Criar</button>
->>>>>>> Notas
                 </form>
             </main>
 
