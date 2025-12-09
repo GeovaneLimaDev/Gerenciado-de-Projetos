@@ -9,7 +9,6 @@ import MyProject from "../../components/myProject/MyProject"
 import ScrumBoard from "../../components/scrumBoard/scrumBoard"
 import Favorit from "../../components/favorit/favorit"
 import Config from "../../components/config/indexConfig"
-import NotesPage from "../../components/NotesPages/Notes"
 
 function IndexHome () {
     const nav = useNavigate()
@@ -39,7 +38,6 @@ function IndexHome () {
                             <Route path="projeto/:id" element={<ScrumBoard user={user}/>} /> 
                             <Route path="configuracaes" element={<Config />} />
                             <Route path="favoritos" element={<Favorit />} />
-                            <Route path="notas" element={<NotesPage />} />
                         </Routes>
                     </aside>
                 </section>

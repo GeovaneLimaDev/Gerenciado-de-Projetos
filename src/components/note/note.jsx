@@ -5,7 +5,7 @@ import { useProject } from "../../hooks/useContext";
 import addNoteProject from "../../service/firebase/notesProject/addNoteProject";
 import updatedNotesProject from "../../service/firebase/notesProject/updatNotesProject";
 
-export default function Note ({note, setNote}) {
+export default function Note ({note, setNote, setSalveLoading}) {
     const [text, setText] = useState(note ? note.text : "")
     const [title, setTitle] = useState(note ? note.title : "")
     const {projectClick} = useProject()
@@ -16,9 +16,11 @@ export default function Note ({note, setNote}) {
 
         function salve (){
             clearTimeout(timout)
+            
+            if(note){if(title != note.title || text != note.text) setSalveLoading(true)}
 
             timout = setTimeout(async () => {
-
+                
                 if(!note){
                     const obj = {
                         userId: projectClick.userId,
@@ -31,10 +33,10 @@ export default function Note ({note, setNote}) {
 
                     setNote(obj)
                     const result = await addNoteProject(obj)
-                    console.log(result)
+                    setSalveLoading(false)
 
                 }else if(title != note.title || text != note.text){
-
+                    
                     const obj ={
                         ...note,
                         text: text,
@@ -42,6 +44,7 @@ export default function Note ({note, setNote}) {
                     }
                     const result = await updatedNotesProject(obj)
                     console.log(result)
+                    setSalveLoading(false)
                 }
             }, 800)
         }

@@ -50,10 +50,12 @@ function ScrumBoard () {
         })
         return () => unsubscribe()
     }, [newTesk, subtask])
+
     function headleDragStart (event) {
         const {active, over} = event
         setStart(active.id)
     }
+
     function headleDragEnd(event) {
         const {active, over} = event
          if(over) {
@@ -63,7 +65,6 @@ function ScrumBoard () {
                 progress: over.id,
                 id: task.id,
                 idPai: task.idPai,
-                priority: task.priority,
                 title: task.title,
                 userId: task.userId,
                 description: task.description
@@ -72,6 +73,7 @@ function ScrumBoard () {
             setSubtask([...taskList, newTask])
             const result = updateTask(newTask)
             setStart(false)
+            console.log(result)
         
         }
     }
