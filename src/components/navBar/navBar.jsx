@@ -49,23 +49,21 @@ function NavBar ({user}) {
                                 <p className={style.pOptions}> Projetos</p>
                             </li>
                         </Link>
-                        <Link to='/home/notas' className={style.link}>
-                            <li className={style.liOptions}>
-                                <FaRegStickyNote className={style.icon}/>
-                                <p className={style.pOptions}>Notas</p>
-                            </li>
-                        </Link>
-                        
-                        <Link to='/home/favoritos' className={style.link}>
+    
+                        {/*<Link to='/home/favoritos' className={style.link}>
                             <li className={style.liOptions}>
                                 <FaBookmark className={style.icon}/>
                                 <p className={style.pOptions}>Favoritos</p>
                             </li>
+<<<<<<< HEAD
                         </Link>
 
                         <li>
                             Calendário
                         </li>
+=======
+                        </Link>*/}
+>>>>>>> Notas
                     </ul>
                 </aside>
                 <aside className={style.asideProject} >

@@ -10,12 +10,15 @@ import Column from "../column/column.jsx"
 import updateTask from "../../service/firebase/subtask/updateTask.js"
 import { FaArrowLeft } from "react-icons/fa"
 import { useNavigate } from "react-router-dom"
+import NoteProject from "../noteProject/noteProject.jsx"
+
 
 function ScrumBoard () {
     const {projectClick} = useProject()
     const [newTesk, setNewtesk] = useState(false)
     const [subtask, setSubtask] = useState([])
     const [start, setStart] = useState(false)
+    const [notes, setNotes] = useState(false)
     const nav = useNavigate()
 
     window.document.title = projectClick.title
@@ -47,10 +50,12 @@ function ScrumBoard () {
         })
         return () => unsubscribe()
     }, [newTesk, subtask])
+
     function headleDragStart (event) {
         const {active, over} = event
         setStart(active.id)
     }
+
     function headleDragEnd(event) {
         const {active, over} = event
          if(over) {
@@ -60,7 +65,6 @@ function ScrumBoard () {
                 progress: over.id,
                 id: task.id,
                 idPai: task.idPai,
-                priority: task.priority,
                 title: task.title,
                 userId: task.userId,
                 description: task.description
@@ -69,6 +73,7 @@ function ScrumBoard () {
             setSubtask([...taskList, newTask])
             const result = updateTask(newTask)
             setStart(false)
+            console.log(result)
         
         }
     }
@@ -85,11 +90,12 @@ function ScrumBoard () {
 
                 <div className={style.butsHead}>
                     <button className={style.butNewP} onClick={() => setNewtesk(true)}>Criar funcionalidade</button>
-                    <button>Notas Rapidas</button>
+                    <button onClick={() => setNotes(true)}>Notas Rapidas</button>
                 </div>
                 {newTesk && <CreateSubTask setNewTesk={setNewtesk} projectClick={projectClick} />}
             </header>
             <section className={style.section}>
+                {notes && <NoteProject setNotes={setNotes} />}
                 <DndContext sensors={sensors} onDragEnd={headleDragEnd} onDragStart={headleDragStart}>
                     <Column
                         id="backlog"

@@ -33,8 +33,8 @@ export default function CardProject ({project, setEdit, setEditedProject}) {
             </section>
 
             <aside className={style.aside}>
-                    <div className={style.progresso}>
-                        barra de progresso
+                    <div className={style.Progresso}>
+                        <div className={style.ProgressoFill}></div>
                     </div>
                     <div className={style.butsContent}>
 

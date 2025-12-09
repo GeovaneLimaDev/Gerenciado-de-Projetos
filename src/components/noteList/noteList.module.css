@@ -1,0 +1,51 @@
+.title{
+    text-align: center;
+    margin: auto;
+    margin-top: 20px;
+    font-size: 2em;
+    line-height: 0.9em;
+    width: 80%;
+    display: block;
+}
+.carrossel{
+    height: 340px;
+    padding: 20px;
+    display: grid;
+    align-content: start;
+    grid-auto-flow: row;
+    overflow-x: auto;
+    scrollbar-width: none;
+    gap: 20px;
+}
+.article{
+    padding-top: 6px;
+    display: grid;
+    border-radius: 10px;
+    background-color: rgb(255, 191, 0);
+}
+.content{
+    background-color: rgb(165, 163, 163);
+    border-radius: 0px 0px 10px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:10px 20px;
+}
+.text{
+    font-size: 1.3em;
+    font-weight: 600;
+}
+.butDelet{
+    font-size: 1.3em;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.butDelet:hover{
+    background-color: gray;
+    transition: 0.2s;
+}
+
