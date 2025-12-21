@@ -10,6 +10,7 @@ function Registration () {
     const [email, setEmail] = useState('')
     const [password, setPassWord] = useState('')
     const nav = useNavigate()
+    
     async function seveData (e) {
         e.preventDefault()
 
@@ -36,7 +37,7 @@ function Registration () {
 
         const res = await registrationFire(data)
 
-        
+        console.log(res)
         if(res != 'feito') {
             alert(res)
             return

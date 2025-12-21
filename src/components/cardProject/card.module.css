@@ -33,6 +33,11 @@
     margin: auto;
     font-size: 1.1em;
     text-indent: 20px;
+    height: 80px;
+    white-space: wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 10px;
 }
 .tagContent{
     display: flex;

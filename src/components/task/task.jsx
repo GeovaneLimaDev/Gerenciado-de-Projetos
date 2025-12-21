@@ -30,8 +30,7 @@ function Task ({task}) {
                 const obj = {
                     ...task,
                     description: description,
-                    title: title,
-                    priority: priority
+                    title: title
                 }
 
                 const result = updateTask(obj)
@@ -43,7 +42,7 @@ function Task ({task}) {
         return () => {
             clearTimeout(timeout)
         }
-    }, [title, description, priority])
+    }, [title, description])
 
     return (
         <>
@@ -71,12 +70,6 @@ function Task ({task}) {
                         <textarea onChange={(e) => setDescription(e.target.value)} value={description ? description : ""} placeholder="Anotações importantes da tesk" rows="5" className={style.text} name="" id=""></textarea>
                     </div>
                     <div className={style.deletContent}>
-                        <select value={priority} onChange={(e) => setPriority(e.target.value)} name="" id="" className={style.select}>
-                            <option className={style.opaco} value="">Prioridade</option>
-                            <option value="Alta">Alta</option>
-                            <option value="Média">Média</option>
-                            <option value="Baixa">Baixa</option>
-                        </select>
                         <p onClick={() => deletTask(task.id)} className={style.butDelet}>
                             <FaTrashAlt />
                         </p>

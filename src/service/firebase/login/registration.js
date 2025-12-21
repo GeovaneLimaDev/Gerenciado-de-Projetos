@@ -3,7 +3,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 
 export async function registrationFire (user){
     try{
-        const userCreedential = await createUserWithEmailAndPassword(auth, user)
+        const userCreedential = await createUserWithEmailAndPassword(auth, user.email, user.password)
         return 'feito'
     }catch(erro){
         let mensagem = ''
@@ -19,7 +19,7 @@ export async function registrationFire (user){
                 mensagem = "A senha deve ter pelo menos 6 caracteres.";
                 break;
             default:
-                mensagem = "Ocorreu um erro ao registrar o usuário.";
+                mensagem = erro;
                 }
 
         return mensagem

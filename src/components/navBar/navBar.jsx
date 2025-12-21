@@ -55,15 +55,7 @@ function NavBar ({user}) {
                                 <FaBookmark className={style.icon}/>
                                 <p className={style.pOptions}>Favoritos</p>
                             </li>
-<<<<<<< HEAD
-                        </Link>
-
-                        <li>
-                            Calendário
-                        </li>
-=======
                         </Link>*/}
->>>>>>> Notas
                     </ul>
                 </aside>
                 <aside className={style.asideProject} >
